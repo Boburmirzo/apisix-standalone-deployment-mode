@@ -1,0 +1,19 @@
+upstreams:
+  - name: "example upstream"
+    id: 1
+    type: roundrobin
+    nodes:
+      "backend:80": 1
+routes:
+  - name: "example-route"
+    uri: /
+    method: GET
+    upstream_id: 1
+    plugins:
+      key-auth: {}
+consumers:
+  - username: exampleuser
+    plugins:
+      key-auth:
+        key: example-key
+#END
